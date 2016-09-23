@@ -120,7 +120,7 @@ function handlePostback(req, res) {
         bot: createBot(req.body.appUser)
     });
 		
-		stateMachine.receiveMessage(postback.action.payload)
+		stateMachine.receiveMessage(postback.action.text)
         .then(() => res.end())
         .catch((err) => {
             console.error('SmoochBot error:', err);
