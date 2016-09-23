@@ -46,13 +46,8 @@ module.exports = new Script({
       }
     }
 		 
-	 }
-	 
-
-},
-
-	
-
+	 },
+	 	
 	no: {
     prompt: (bot) => bot.say('What should I call you?'),
     receive: (bot, message) => {
