@@ -21,13 +21,19 @@ module.exports = new Script({
             const name = message.text;
             return bot.setProp('name', name)
                 .then(() => bot.say(`Great! I'll call you ${name} 
-				Is that OK? %[Yes](postback:yes) %[No](postback:no)`)),
-				receive: (bot, message) => {
+				Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+				.then(()=>'confirmName');		
+                
+        }
+    },
 
-      switch(message.text) {
+	confirmName: {	
+	
+	 receive: (bot, message) => {
+		  switch(message.text) {
         case 'Yes':
           return bot.say(`Ok, great!`)
-            .then(() => 'hi')
+            .then(() => 'finish')
           break;
         case 'No':
           return bot.say(`Ok`)
@@ -39,9 +45,12 @@ module.exports = new Script({
           break;          
       }
     }
-                
-        }
-    },
+		 
+	 }
+	 
+
+},
+
 	
 
 	no: {
