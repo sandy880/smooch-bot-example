@@ -41,7 +41,7 @@ module.exports = new Script({
           break;
         default:
           return bot.say(`hmm...`)
-            .then(() => 'processing')
+            .then(() => 'finish')
           break;          
       }
     }
@@ -65,7 +65,7 @@ module.exports = new Script({
             return bot.getProp('name')
                 .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
                         'teach me how to do anything else!'))
-                .then(() => 'finish');
+                .then(() => 'no');
         }
     }
 });
