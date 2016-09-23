@@ -34,7 +34,7 @@ module.exports = new Script({
 	no: {
     prompt: (bot) => bot.say('What should I call you?'),
     receive: (bot, message) => {
-            const new_name = message.text;
+            const name = message.text;
             return bot.setProp('name', name)
                 .then(() => bot.say(`Great! I'll call you ${name}` 
 				))
