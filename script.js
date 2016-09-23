@@ -21,15 +21,28 @@ module.exports = new Script({
             const name = message.text;
             return bot.setProp('name', name)
                 .then(() => bot.say(`Great! I'll call you ${name} 
-				Is that OK? %[Yes](postback:yes) %[No](postback:no)`));
+				Is that OK? %[Yes](postback:yes) %[No](postback:no)`)),
+				receive: (bot, message) => {
+
+      switch(message.text) {
+        case 'Yes':
+          return bot.say(`Ok, great!`)
+            .then(() => 'hi')
+          break;
+        case 'No':
+          return bot.say(`Ok`)
+            .then(() => 'no')
+          break;
+        default:
+          return bot.say(`hmm...`)
+            .then(() => 'processing')
+          break;          
+      }
+    }
                 
         }
     },
 	
-	yes: {
-    prompt: (bot) => bot.say('Ok, great!'),
-    receive: () => 'finish'
-	},
 
 	no: {
     prompt: (bot) => bot.say('What should I call you?'),
