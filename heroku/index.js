@@ -122,7 +122,7 @@ function handlePostback(req, res) {
 	 const msg = postback;
 
     // if you want the payload instead just do msg.action.paylod
-    msg = msg.action.text;
+    msg = msg.action.payload;
 		
 		stateMachine.receiveMessage(msg)
         .then(() => res.end())
