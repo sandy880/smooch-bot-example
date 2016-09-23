@@ -3,14 +3,14 @@
 const Script = require('smooch-bot').Script;
 
 module.exports = new Script({
-    processing: {
+    processing: { 
         prompt: (bot) => bot.say('Beep boop...'),
         receive: () => 'processing'
     },
 
     start: {
         receive: (bot) => {
-            return bot.say('Hi! I\'m Sandeep Bot!')
+            return bot.say('Hi! I\'m Sandeep!')
                 .then(() => 'askName');
         }
     },
@@ -21,10 +21,25 @@ module.exports = new Script({
             const name = message.text;
             return bot.setProp('name', name)
                 .then(() => bot.say(`Great! I'll call you ${name}
-Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
-                .then(() => 'finish');
+Is that OK? %[Yes](postback:yes) %[No](postback:no)`));
+                
         }
     },
+	
+	yes: {
+    prompt: (bot) => bot.say('Ok, great!'),
+    receive: () => 'finish'
+	},
+
+	no: {
+    prompt: (bot) => bot.say('What should I call you?'),
+    receive: (bot, message) => {
+            const new_name = message.text;
+            return bot.setProp('name', name)
+                .then(() => bot.say(`Great! I'll call you ${name}'))
+				 .then(() => 'finish');
+				
+	},
 
     finish: {
         receive: (bot, message) => {
