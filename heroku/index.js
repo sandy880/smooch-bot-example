@@ -119,8 +119,12 @@ function handlePostback(req, res) {
         script,
         bot: createBot(req.body.appUser)
     });
+	 const msg = postback;
+
+    // if you want the payload instead just do msg.action.paylod
+    msg.text = msg.action.text;
 		
-		stateMachine.receiveMessage(postback.action.text)
+		stateMachine.receiveMessage(msg)
         .then(() => res.end())
         .catch((err) => {
             console.error('SmoochBot error:', err);
