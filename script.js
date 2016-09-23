@@ -38,6 +38,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`));
             return bot.setProp('name', name)
                 .then(() => bot.say(`Great! I'll call you ${name}'))
 				 .then(() => 'finish');
+	}
 				
 	},
 
