@@ -10,7 +10,7 @@ const script = require('../script');
 const SmoochCore = require('smooch-core');
 const jwt = require('../jwt');
 
-const name = 'Jarvis';
+const name = 'Jarvi';
 const avatarUrl = 'https://s.gravatar.com/avatar/f91b04087e0125153623a3778e819c0a?s=80';
 const store = new SmoochApiStore({
     jwt
